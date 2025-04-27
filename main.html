@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝓁𝒶𝓈𝓉 𝒷𝓇𝑒𝒶𝓉𝒽</title>
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://github.com/zj43/j/releases/download/111/s.png') no-repeat center center fixed;
+            background-size: cover;
+            filter: blur(10px);
+            z-index: -1;
+        }
+
+        .content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            text-shadow: 0 0 10px #fff;
+        }
+
+        h1 {
+            font-size: 50px;
+            font-family: 'Cursive', sans-serif;
+            margin-bottom: 20px;
+            animation: bounce 4s infinite; /* Медленнее анимация */
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
+        }
+
+        p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff;
+        }
+
+        /* Стили для меню */
+        .menu {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Сделаем подпункты видимыми */
+        .sub-menu {
+            display: none;
+            flex-direction: column;
+            margin-left: 20px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Показываем подменю при наведении на родительский элемент */
+        .projects:hover + .sub-menu,
+        .sub-menu:hover {
+            display: flex;
+        }
+
+        /* Плавные анимации для меню */
+        .sub-menu a {
+            padding: 8px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            margin-top: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sub-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Анимации */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+
+    <div class="content">
+        <h1>𝓁𝒶𝓈𝓉 𝒷𝓇𝑒𝒶𝓉𝒽</h1>
+        <p>dis short web page ws created by me 4 no reason cuz idk i wanted to make my collection right here</p>
+    </div>
+
+    <!-- Меню -->
+    <div class="menu">
+        <a href="#">Main Page</a>
+        <a href="#" class="projects">Projects</a>
+        <div class="sub-menu">
+            <a href="#" id="music-link">Music</a>
+            <a href="#" id="other-link">Other</a>
+        </div>
+        <a href="#">About Me</a>
+    </div>
+
+    <script>
+        // Изменяемые ссылки для Music и Other
+        const musicLink = "https://dodododododo.do";
+        const otherLink = "https://dodododododo.do";
+
+        // Привязываем новые ссылки к элементам
+        document.getElementById('music-link').addEventListener('click', function() {
+            window.location.href = musicLink;
+        });
+
+        document.getElementById('other-link').addEventListener('click', function() {
+            window.location.href = otherLink;
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝓁𝒶𝓈𝓉 𝒷𝓇𝑒𝒶𝓉𝒽</title>
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://github.com/zj43/j/releases/download/111/s.png') no-repeat center center fixed;
+            background-size: cover;
+            filter: blur(10px);
+            z-index: -1;
+        }
+
+        .content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            padding: 20px;
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff;
+        }
+
+        p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff;
+        }
+
+        /* Квадратик с кнопкой Back и стрелочкой */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #333; /* Темный фон */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            display: inline-flex;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 0 10px #fff; /* Glow эффект */
+        }
+
+        .back-button:hover {
+            background-color: rgba(0, 0, 0, 0.7); /* Легкое затемнение при наведении */
+            box-shadow: 0 0 20px #fff; /* Увеличиваем glow эффект при наведении */
+        }
+
+        .back-button::before {
+            content: '←'; /* Стрелка назад */
+            margin-right: 10px;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+
+    <!-- Страница Music -->
+    <div class="content">
+        <a href="#" class="back-button" id="back-link">Back</a>
+        <p>nothing to listen here yet!, come back soon! (❁´◡`❁)</p>
+    </div>
+
+    <script>
+        // Ссылка на "Back" и редактируемая ссылка для основной страницы
+        const backLink = "https://dodododododo.do";  // Редактируемая ссылка
+
+        // Привязываем ссылку на кнопку "Back"
+        document.getElementById('back-link').addEventListener('click', function() {
+            window.location.href = backLink;
+        });
+    </script>
+</body>
+</html>
