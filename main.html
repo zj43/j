@@ -1,175 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>𝓁𝒶𝓈𝓉 𝒷𝓇𝑒𝒶𝓉𝒽</title>
-    <style>
-        /* Общие стили */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>𝓁𝒶𝓈𝓉 𝒷𝓇𝑒𝒶𝓉𝒽</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      cursor: url('https://github.com/zj43/j/releases/download/111/coursor.png') 16 16, auto;
+      transition: background 0.5s ease;
+    }
+    .background {
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://github.com/zj43/j/releases/download/111/s.png') no-repeat center center fixed;
+      background-size: cover;
+      filter: blur(10px);
+      z-index: -1;
+      transition: background-image 0.5s ease;
+    }
+    .content {
+      text-align: center;
+      color: white;
+      z-index: 1;
+      text-shadow: 0 0 10px #fff;
+      transition: opacity 0.5s ease;
+    }
+    h1 {
+      font-size: 50px;
+      font-family: 'Cursive', sans-serif;
+      margin-bottom: 20px;
+      animation: bounce 4s infinite;
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
+    }
+    p {
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff;
+    }
+    .menu {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 2;
+      text-shadow: 0 0 10px #fff;
+    }
+    .menu a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+    }
+    .menu a:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+    .sub-menu {
+      display: none;
+      flex-direction: column;
+      margin-left: 20px;
+    }
+    .projects:hover + .sub-menu,
+    .sub-menu:hover {
+      display: flex;
+    }
+    .sub-menu a {
+      padding: 8px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 5px;
+      margin-top: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .sub-menu a:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 3;
+    }
+    .toggle-switch {
+      width: 50px;
+      height: 25px;
+      background-color: rgba(255,255,255,0.5);
+      border-radius: 25px;
+      position: relative;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .toggle-switch::after {
+      content: "";
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 2.5px;
+      left: 2.5px;
+      transition: left 0.3s ease;
+    }
+    .toggle-switch.active {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .toggle-switch.active::after {
+      left: 27.5px;
+    }
+    .language-selector {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background-color: rgba(0,0,0,0.5);
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 3;
+    }
+    .flag {
+      width: 32px;
+      height: 20px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      border-radius: 4px;
+    }
+    .flag:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    .flag.selected {
+      opacity: 1;
+      box-shadow: 0 0 10px white;
+    }
+  </style>
 
-        body, html {
-            height: 100%;
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-        }
-
-        .background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://github.com/zj43/j/releases/download/111/s.png') no-repeat center center fixed;
-            background-size: cover;
-            filter: blur(10px);
-            z-index: -1;
-        }
-
-        .content {
-            text-align: center;
-            color: white;
-            z-index: 1;
-            text-shadow: 0 0 10px #fff;
-        }
-
-        h1 {
-            font-size: 50px;
-            font-family: 'Cursive', sans-serif;
-            margin-bottom: 20px;
-            animation: bounce 4s infinite; /* Медленнее анимация */
-            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
-        }
-
-        p {
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 0 20px;
-            text-shadow: 0 0 10px #fff, 0 0 20px #fff;
-        }
-
-        /* Стили для меню */
-        .menu {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border-radius: 5px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 2;
-            text-shadow: 0 0 10px #fff, 0 0 20px #fff;
-        }
-
-        .menu a {
-            color: white;
-            text-decoration: none;
-            padding: 10px;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
-        }
-
-        .menu a:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Сделаем подпункты видимыми */
-        .sub-menu {
-            display: none;
-            flex-direction: column;
-            margin-left: 20px;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        /* Показываем подменю при наведении на родительский элемент */
-        .projects:hover + .sub-menu,
-        .sub-menu:hover {
-            display: flex;
-        }
-
-        /* Плавные анимации для меню */
-        .sub-menu a {
-            padding: 8px;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 5px;
-            margin-top: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .sub-menu a:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Анимации */
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-    </style>
+  <link rel="preload" href="https://github.com/zj43/j/releases/download/111/s.png" as="image">
+  <link rel="preload" href="https://github.com/zj43/j/releases/download/111/blackbg.jpg" as="image">
+  <link rel="preload" href="https://github.com/zj43/j/releases/download/111/coursor.png" as="image">
 </head>
+
 <body>
-    <div class="background"></div>
 
-    <div class="content">
-        <h1>𝓁𝒶𝓈𝓉 𝒷𝓇𝑒𝒶𝓉𝒽</h1>
-        <p>dis short web page ws created by me 4 no reason cuz idk i wanted to make my collection right here</p>
-    </div>
+<div class="background" id="background"></div>
 
-    <!-- Меню -->
-    <div class="menu">
-        <a href="#">Main Page</a>
-        <a href="#" class="projects">Projects</a>
-        <div class="sub-menu">
-            <a href="#" id="music-link">Music</a>
-            <a href="#" id="other-link">Other</a>
-        </div>
-        <a href="#" id="about-link">About Me</a> <!-- Оставляем существующую ссылку -->
-    </div>
+<div class="content" id="content">
+  <h1>𝓁𝒶𝓈𝓉 𝒷𝓇𝑒𝒶𝓉𝒽</h1>
+  <p>dis short web page ws created by me 4 no reason cuz idk i wanted to make my collection right here</p>
+</div>
 
-    <script>
-        // Изменяемые ссылки для Music, Other и About
-        const musicLink = "https://zj43.github.io/j/muisc.html";
-        const otherLink = "https://zj43.github.io/j/other.html";
-        const aboutLink = "https://zj43.github.io/j/about.html"; // Ссылка на страницу About
+<div class="menu">
+  <a href="https://zj43.github.io/j/main.html" target="_blank">Main Page</a> <!-- Link to main page -->
+  <a href="#" class="projects">Projects</a>
+  <div class="sub-menu">
+    <a href="https://zj43.github.io/j/muisc.html" target="_blank" id="music-link">Music</a> <!-- Link to music page -->
+    <a href="https://zj43.github.io/j/other.html" target="_blank" id="other-link">Other</a> <!-- Link to other page -->
+  </div>
+  <a href="https://example.com/about" target="_blank" id="about-link">About Me</a> <!-- Link to about me -->
+</div>
 
-        // Привязываем новые ссылки к элементам
-        document.getElementById('music-link').addEventListener('click', function() {
-            window.location.href = musicLink;
-        });
+<div class="theme-toggle">
+  <div class="toggle-switch" id="theme-toggle"></div>
+</div>
 
-        document.getElementById('other-link').addEventListener('click', function() {
-            window.location.href = otherLink;
-        });
+<div class="language-selector">
+  <img src="https://flagcdn.com/us.svg" alt="English" id="en" class="flag selected">
+  <img src="https://flagcdn.com/ru.svg" alt="Русский" id="ru" class="flag">
+  <img src="https://flagcdn.com/jp.svg" alt="日本語" id="jp" class="flag">
+</div>
 
-        document.getElementById('about-link').addEventListener('click', function() {
-            window.location.href = aboutLink; // Привязка уже существующей кнопки
-        });
-    </script>
+<script>
+  const translations = {
+    en: {
+      title: "𝓁𝒶𝓈𝓉 𝒷𝓇𝑒𝒶𝓉𝒽",
+      paragraph: "dis short web page ws created by me 4 no reason cuz idk i wanted to make my collection right here",
+      mainPage: "Main Page",
+      projects: "Projects",
+      music: "Music",
+      other: "Other",
+      aboutMe: "About Me"
+    },
+    ru: {
+      title: "Последний вздох",
+      paragraph: "Этот короткий веб-сайт был создан без особой причины, просто хотел сделать свою коллекцию прямо здесь.",
+      mainPage: "Главная страница",
+      projects: "Проекты",
+      music: "Музыка",
+      other: "Прочее",
+      aboutMe: "Обо мне"
+    },
+    jp: {
+      title: "最後の息",
+      paragraph: "この短いウェブページは特に理由もなく作成されました。コレクションをここにまとめたかっただけです。",
+      mainPage: "メインページ",
+      projects: "プロジェクト",
+      music: "音楽",
+      other: "その他",
+      aboutMe: "私について"
+    }
+  };
+
+  const elements = {
+    content: document.getElementById('content'),
+    title: document.querySelector('.content h1'),
+    paragraph: document.querySelector('.content p'),
+    mainPage: document.querySelector('.menu a'),
+    projects: document.querySelector('.menu .projects'),
+    music: document.getElementById('music-link'),
+    other: document.getElementById('other-link'),
+    aboutMe: document.getElementById('about-link')
+  };
+
+  const setLanguage = (lang) => {
+    elements.title.textContent = translations[lang].title;
+    elements.paragraph.textContent = translations[lang].paragraph;
+    elements.mainPage.textContent = translations[lang].mainPage;
+    elements.projects.textContent = translations[lang].projects;
+    elements.music.textContent = translations[lang].music;
+    elements.other.textContent = translations[lang].other;
+    elements.aboutMe.textContent = translations[lang].aboutMe;
+  };
+
+  document.getElementById('en').addEventListener('click', () => {
+    setLanguage('en');
+    document.getElementById('en').classList.add('selected');
+    document.getElementById('ru').classList.remove('selected');
+    document.getElementById('jp').classList.remove('selected');
+  });
+
+  document.getElementById('ru').addEventListener('click', () => {
+    setLanguage('ru');
+    document.getElementById('en').classList.remove('selected');
+    document.getElementById('ru').classList.add('selected');
+    document.getElementById('jp').classList.remove('selected');
+  });
+
+  document.getElementById('jp').addEventListener('click', () => {
+    setLanguage('jp');
+    document.getElementById('en').classList.remove('selected');
+    document.getElementById('ru').classList.remove('selected');
+    document.getElementById('jp').classList.add('selected');
+  });
+
+  const toggle = document.getElementById('theme-toggle');
+  const background = document.getElementById('background');
+  let darkMode = false;
+
+  toggle.addEventListener('click', function() {
+    darkMode = !darkMode;
+    toggle.classList.toggle('active');
+    if (darkMode) {
+      background.style.backgroundImage = "url('https://github.com/zj43/j/releases/download/111/blackbg.jpg')";
+    } else {
+      background.style.backgroundImage = "url('https://github.com/zj43/j/releases/download/111/s.png')";
+    }
+  });
+</script>
 
 </body>
 </html>
